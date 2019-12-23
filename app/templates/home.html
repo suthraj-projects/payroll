@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Home</title>
+	</head>
+	<body>
+		{% extends "template.html" %}
+		{% block content %}
+		
+		<br>
+		<h2> Upload Timesheet Report 
+			<h3>(ie. timesheet .csv file)</h3>
+		</h2>
+		<p>
+			{% with messages = get_flashed_messages(with_categories=true) %}
+				{% if messages %}
+					<ul class=flashes>
+						{% for category, message in messages %}
+							<div class="{{ category }}">
+								<li>{{ message }}</li>
+							</div>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</p>
+		
+		<div class="container">
+			<table>
+				<thead>
+					<tr >
+						<th style="width: 50%">
+							<form method="POST" action="/" enctype="multipart/form-data">
+							    <dl>
+									<p><input type="file" name="file" autocomplete="off" required></p>
+							    </dl>
+							    <p><input type="submit" value="Submit"></p>
+							</form>
+						</th>
+						<th style="width: 50%">
+							<div class="container" align="RIGHT">
+								<h3> <b>OPTION</b> - Reset All Tables </h3>
+								<form action="{{ url_for('reset') }}" method="GET">
+									<div style="float:top;margin-right:20px;">
+										<label > Reset all server side tables</label>
+									</div>
+									<div style="float:top;margin-right:20px;">
+										<input type="submit" class="btn btn-danger" value="RESET"></input>
+									</div>
+								</form>
+							</div>			
+						</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		
+		<br>
+		<small class="text-muted"> Timesheet Report </small>
+		<p> <b>NOTE:</b> Reflects most recent timesheet upload only </p>
+		
+		<div >
+			<table class="table table-striped table-hover table-condensed" id="owned_stock_table" >
+				<thead>
+					<tr>
+						<th style="width:25%; text-align:center">date</th>
+						<th style="width:25%; text-align:center">hours worked</th>
+						<th style="width:25%; text-align:center">employee id </th>
+						<th style="width:25%; text-align:center">job group</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="bodycontainer scrollable">
+				<table class="table table-striped table-condensed table-scrollable" id="owned_stock_table" >
+					<tbody>
+						{% for row in tb_tr_data %}
+						<tr>
+							<td style="width: 25%; text-align:center">{{row['date']}}</td>
+							<td style="width: 25%; text-align:center">{{row['hours_worked']}}</td>
+							<td style="width: 25%; text-align:center">{{row['employee_id']}}</td>
+							<td style="width: 25%; text-align:center">{{row['job_group']}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		{% endblock %}
+	</body>
+</html>

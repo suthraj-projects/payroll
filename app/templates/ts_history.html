@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Timesheet History</title>
+	</head>
+	<body>
+		{% extends "template.html" %}
+		{% block content %}
+    
+			<br>
+			<small class="text-muted"> Timesheet History </small>
+			<p> <b>NOTE:</b> History of all uploaded timesheets data </p>
+			
+			<div >
+				<table class="table table-striped table-hover table-condensed" id="owned_stock_table" >
+					<thead>
+						<tr>
+							<th style="width:20%; text-align:center">Date</th>
+							<th style="width:20%; text-align:center">Hours Worked</th>
+							<th style="width:20%; text-align:center">Employee ID</th>
+							<th style="width:20%; text-align:center">Job Group</th>
+							<th style="width:20%; text-align:center">Report ID</th>
+						</tr>
+					</thead>
+				</table>
+				<div class="bodycontainer scrollable">
+					<table class="table table-striped table-condensed table-scrollable" id="owned_stock_table" >
+						<tbody>
+							{% for row in tb_data %}
+							<tr>
+								<td style="width: 20%; text-align:center">{{row['date']}}</td>
+								<td style="width: 20%; text-align:center">{{row['hours_worked']}}</td>
+								<td style="width: 20%; text-align:center">{{row['employee_id']}}</td>
+								<td style="width: 20%; text-align:center">{{row['job_group']}}</td>
+								<td style="width: 20%; text-align:center">{{row['report_id']}}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+      
+		{% endblock %}
+	</body>
+</html>

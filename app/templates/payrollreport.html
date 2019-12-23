@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Payroll Report</title>
+	</head>
+	<body>
+		{% extends "template.html" %}
+		{% block content %}
+    
+			<br>
+			<small class="text-muted">  Payroll Report </small>
+			<p> <b>NOTE:</b> Based on amalgamation of uploaded timesheets (ie. csv files) </p>
+			
+			<div >
+				<table class="table table-striped table-hover table-condensed" id="owned_stock_table" >
+					<thead>
+						<tr>
+							<th style="width:20%; text-align:center">Employee ID</th>
+							<th style="width:40%; text-align:center">Pay Period</th>
+							<th style="width:40%; text-align:center">Amount Paid ($)</th>
+						</tr>
+					</thead>
+				</table>
+				<div class="bodycontainer scrollable">
+					<table class="table table-striped table-condensed table-scrollable" id="owned_stock_table" >
+						<tbody>
+							{% for row in tb_csvData %}
+							<tr>
+								<td style="width: 20%; text-align:center">{{row['employee_id']}}</td>
+								<td style="width: 40%; text-align:center">{{row['pay_period']}}</td>
+								<td style="width: 40%; text-align:center">{{row['amount_paid']}}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+      
+		{% endblock %}
+	</body>
+</html>
