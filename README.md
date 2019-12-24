@@ -99,15 +99,13 @@ Create a directory called vEnvPython in the home directory
 mkdir ~/vEnvPy
 ```
 
-Check Python installation path (should be: '/usr/bin/python')
-
+Check Python installation
+ 
 ```python
+#Check Python installation path (should be: '/usr/bin/python')
 which python
-```
 
-Check Python Virtual Environment installation path (should be: '/usr/bin/virtualenv')
-
-```python
+#Check Python Virtual Environment installation path (should be: '/usr/bin/virtualenv')
 which virtualenv 
 ```
 
@@ -115,11 +113,8 @@ Create environment variable using Python 2.7
 
 ```python
 virtualenv ~/vEnvPy/payroll_py2_7 --python=/usr/bin/python
-```
 
-Activate new python virtual environment
-
-```python
+#Activate new python virtual environment
 source ~/vEnvPy/payroll_py2_7/bin/activate
 ```
 
