@@ -36,7 +36,7 @@ app.config['DB_TABLE_PAYROLL_HISTORY']      = "payroll_history"
 
 # MySQL configurations
 app.config['MYSQL_HOST']          = 'localhost'
-app.config['MYSQL_USER']          = 'sr_public'
+app.config['MYSQL_USER']          = 'srpub'
 app.config['MYSQL_PASSWORD']      = 'mysql111'
 app.config['MYSQL_DB']            = 'payroll'
 app.config['MYSQL_CURSORCLASS']   = 'DictCursor'

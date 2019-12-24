@@ -60,9 +60,17 @@ SHOW DATABASES;
 Add following db user access to new database
 
 ```mysql
-CREATE USER 'suthraj'@'localhost' IDENTIFIED BY '1mysql1';
-GRANT ALL PRIVILEGES ON payroll.* TO 'suthraj'@'localhost';
+CREATE USER 'srpub'@'localhost' IDENTIFIED BY 'mysql111';
+GRANT ALL PRIVILEGES ON payroll.* TO 'srpub'@'localhost';
 ```
+
+NOTE: If you get password 'current policy requirements' violation error, lower the password policy to 'LOW' as follows:
+
+```mysql
+SHOW VARIABLES LIKE 'validate_password%';
+SET GLOBAL validate_password_policy=LOW;
+```
+
 
 Double check new user <i> suthraj </i> has access to <i> payroll </i> database
 
