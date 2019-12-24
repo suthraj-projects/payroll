@@ -78,6 +78,70 @@ Double check new user <i> suthraj </i> has access to <i> payroll </i> database
 SHOW GRANTS FOR 'srpub'@'localhost';
 ```
 
+<b> PYTHON - Install/Configure Python </b>
+
+Install the following Python packages
+
+```python
+sudo apt-get install python-dev
+sudo apt-get install python-pip python-virtualenv
+```
+
+Check installed Python version, should say "Python 2.7.1x"
+
+```python
+python --version
+```
+
+Create a directory called vEnvPython in the home directory
+
+```python
+mkdir ~/vEnvPy
+```
+
+Check Python installation path (should be: '/usr/bin/python')
+
+```python
+which python
+```
+
+Check Python Virtual Environment installation path (should be: '/usr/bin/virtualenv')
+
+```python
+which virtualenv 
+```
+
+Create environment variable using Python 2.7
+
+```python
+virtualenv ~/vEnvPy/payroll_py2_7 --python=/usr/bin/python
+```
+
+Activate new python virtual environment
+
+```python
+source ~/vEnvPy/payroll_py2_7/bin/activate
+```
+
+<b> FLASK - Install/Configure Flask </b>
+
+Install following necessary dependencies
+
+```python
+sudo apt-get install python-dev default-libmysqlclient-dev libssl-dev
+
+#Make sure the following dependency is installed successfully (might require 'sudo')
+pip install flask-mysqldb
+```
+
+Navigate to project directory
+Execute provided 'Requirements.txt' file to install all necessary Python dependancies to run the 'Payroll Report' application 
+(NOTE: within activated virtual env)
+
+```python
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ```python
