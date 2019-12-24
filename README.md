@@ -75,7 +75,7 @@ SET GLOBAL validate_password_policy=LOW;
 Double check new user <i> suthraj </i> has access to <i> payroll </i> database
 
 ```mysql
-SHOW GRANTS FOR '<user_name>'@'localhost';
+SHOW GRANTS FOR 'srpub'@'localhost';
 ```
 
 ## Usage
