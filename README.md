@@ -20,16 +20,16 @@ sudo apt-get upgrade
 sudo apt-get dist-upgrade  
 ```
 
-Install git
-
-```bash
-sudo apt install git
-```
-
 ### Installation
 
 A step by step series of examples that tell you how to get a development env running
 
+<b> GIT - Install Git </b>
+
+```bash
+#Install git
+sudo apt install git
+```
 
 <b> DATABASE - Install/Configure MySQL </b>
 
