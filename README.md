@@ -151,6 +151,19 @@ Explain how to run the automated tests for this system
  
 ## Deployment
 
+##Troubleshooting
+
+Incomplete termination of previous instance(s) of web app
+
+```python
+#Check if multiple processes of the app are active
+ps aux | grep "main"
+
+#Kill unwanted instances of web app
+kill [process-id]
+
+```
+
 ## Built With
 
 * [Flask](http://flask.palletsprojects.com/en/1.1.x/) - The web framework used
