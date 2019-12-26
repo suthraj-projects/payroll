@@ -8,7 +8,8 @@
 
 import os
 from datetime import datetime
-from app import app, mysql
+#from app import app, mysql
+from config import app, mysql
 from flask import Flask, flash, render_template, request, redirect
 from werkzeug.utils import secure_filename
 

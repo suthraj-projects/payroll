@@ -6,7 +6,7 @@
 ####################################
 
 import dbMySQL as db
-from app import app
+from config import app
 
 #FUNCTION: The 'main' function called externally to compute payroll
 def compute_payroll(app, mysql, report_id):
