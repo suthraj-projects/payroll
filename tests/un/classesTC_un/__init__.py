@@ -1,12 +1,3 @@
-#########################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: December, 24, 2019
-###PURPOSE: Contains all unit test case classes
-### tests/.../classesTC_un
-#########################################
-
-
-import TC_ComputePayroll as ComputePayroll
-
-
-
+#import TC_ComputePayroll as ComputePayroll
+#import payroll.tests.un.classesTC_un.TC_ComputePayroll
+from payroll.tests.un.classesTC_un import TC_ComputePayroll as ComputePayroll

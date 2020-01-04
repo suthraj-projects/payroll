@@ -6,7 +6,12 @@
 ####################################
 
 import dbMySQL as db
-from config import app
+#from config import app
+#from payroll.web_app.main.config import app
+#from payroll.web_app.main import config
+#from payroll.web_app.main.config import app
+#import payroll.web_app.main.config.app as app
+
 
 #FUNCTION: The 'main' function called externally to compute payroll
 def compute_payroll(app, mysql, report_id):
@@ -36,11 +41,11 @@ def compute_payroll_eid(app, mysql, eid, report_id, db_tr_eid_data):
         #print "GET PAYROLL STRING -----"
         if (tmp_date_dict["day"] < pay_period_threshold):
             str_payPeriod = getPayPeriod(1, tmp_date_dict["month"], tmp_date_dict["year"])
-            eid_pay = compute_pay(float(row["hours_worked"]), row["job_group"])
+            eid_pay = compute_pay(app, float(row["hours_worked"]), row["job_group"])
             payPeriod_dict = update_payPeriod_dict(payPeriod_dict, eid, str_payPeriod, eid_pay)
         else:
             str_payPeriod = getPayPeriod(2, tmp_date_dict["month"], tmp_date_dict["year"])
-            eid_pay = compute_pay(float(row["hours_worked"]), row["job_group"])
+            eid_pay = compute_pay(app, float(row["hours_worked"]), row["job_group"])
             payPeriod_dict = update_payPeriod_dict(payPeriod_dict, eid, str_payPeriod, eid_pay)
             
     #print "===== POPULATE PAYROLL HISTORY TABLE ======"
@@ -84,7 +89,7 @@ def getPayPeriod(pay_period, month, year):
 
 
 #FUNCTION: Calculates employee actual pay based on hours worked & associated job group id        
-def compute_pay(eid_hours, eid_group):
+def compute_pay(app, eid_hours, eid_group):
     if (eid_group == 'A'):
         eid_pay = app.config['PAY_RATE_GROUP_A'] * eid_hours
         return eid_pay
