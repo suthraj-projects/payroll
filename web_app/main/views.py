@@ -1,10 +1,12 @@
-##################################################################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: November 17, 2019
-###APPLICATION: Payroll Web Application
-###PURPOSE: The main application file to run the "Payroll Report" web application
-###NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal readability. 
-##################################################################################
+"""
+    AUTHOR: Sutharsan Rajaratnam
+    DATE: November 17, 2019
+    APPLICATION: Payroll Web Application
+    FILE: payroll/web_app/main/views.py
+    PURPOSE: The main application file to run the "Payroll Report" web application
+    
+    NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal readability. 
+"""
 
 import os
 from datetime import datetime
