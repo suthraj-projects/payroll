@@ -133,3 +133,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+#NOTE: Special specific re-included files
+!*/main/data/sample/*.csv 
