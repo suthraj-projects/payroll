@@ -1,6 +1,6 @@
 # Project Title
 
-Simple payroll web application that takes uploaded csv files with predefined formats and calculates payroll per employee per pay period.
+Prototype payroll web application that takes uploaded csv files with predefined formats and calculates payroll per employee per pay period.
 
 ## Getting Started
 
