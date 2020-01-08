@@ -1,9 +1,10 @@
-####################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: November 17, 2019
-###APPLICATION: Payroll Web Application
-###PURPOSE: Read and process CSV files
-####################################
+"""
+    AUTHOR: Sutharsan Rajaratnam
+    DATE: November 17, 2019
+    APPLICATION: Payroll Web Application
+    PURPOSE: Read and process CSV files
+
+"""
 
 import csv
 

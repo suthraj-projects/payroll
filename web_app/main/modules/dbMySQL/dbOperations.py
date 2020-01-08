@@ -1,10 +1,10 @@
-####################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: November 17, 2019
-###APPLICATION: Payroll Web Application
-###PURPOSE: Database operations
-###NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal SQL readability. 
-####################################
+"""
+    AUTHOR: Sutharsan Rajaratnam
+    DATE: November 17, 2019
+    APPLICATION: Payroll Web Application
+    PURPOSE: Database operations
+    NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal SQL readability. 
+"""
 
 
 import dbModels as db_models

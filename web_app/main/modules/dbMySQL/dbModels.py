@@ -1,10 +1,10 @@
-####################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: November 17, 2019
-###APPLICATION: Payroll Web Application
-###PURPOSE: Database Schema/Models
-###NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal SQL readability. 
-####################################
+"""
+    AUTHOR: Sutharsan Rajaratnam
+    DATE: November 17, 2019
+    APPLICATION: Payroll Web Application
+    PURPOSE: Database Schema/Models
+    NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal SQL readability. 
+"""
 
 #FUNCTION: Returns MySQL string to create database table that stores uploaded timesheet data
 def db_model_time_report(tb_name):

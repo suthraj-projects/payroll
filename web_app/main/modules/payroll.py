@@ -1,9 +1,9 @@
-####################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: November 17, 2019
-###APPLICATION: Payroll Web Application
-###PURPOSE:Payroll computation
-####################################
+"""
+    AUTHOR: Sutharsan Rajaratnam
+    DATE: November 17, 2019
+    APPLICATION: Payroll Web Application
+    PURPOSE:Payroll computation
+"""
 
 import dbMySQL as db
 #from config import app

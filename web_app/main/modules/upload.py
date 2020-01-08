@@ -1,9 +1,10 @@
-####################################
-###AUTHOR: Sutharsan Rajaratnam
-###DATE: November 17, 2019
-###APPLICATION: Payroll Web Application
-###PURPOSE: File Upload
-####################################
+"""
+    AUTHOR: Sutharsan Rajaratnam
+    DATE: November 17, 2019
+    APPLICATION: Payroll Web Application
+    PURPOSE: File Upload
+"""
+
 import os
 
 #FUNCTION: Used to check if file extension is allowed
