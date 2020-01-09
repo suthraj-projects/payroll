@@ -67,10 +67,10 @@ def reset():
     return redirect('/')
 
 
-###########################################################################################
-#Local support functions that call relevant custom application functions defined elsewhere 
-#in the 'modules' folder    
-###########################################################################################
+"""
+    Local support functions that call relevant custom application functions defined elsewhere 
+    in the 'modules' folder    
+"""
 
 def process_upload():
     filepath        = app.config['UPLOAD_PATH']
