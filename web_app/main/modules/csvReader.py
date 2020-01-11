@@ -9,7 +9,7 @@
 import csv
 
 def importCSVUpload_dict(filepath, filename):
-    print "Importing CSV using Dictionary... "
+    print ("Importing CSV using Dictionary... ")
     
     path = filepath + filename
     key = "date"

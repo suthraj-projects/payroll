@@ -5,7 +5,7 @@
     PURPOSE:Payroll computation
 """
 
-import dbMySQL as db
+from . import dbMySQL as db
 #from config import app
 #from payroll.web_app.main.config import app
 #from payroll.web_app.main import config
@@ -85,7 +85,7 @@ def getPayPeriod(pay_period, month, year):
         strDateMax_p2 = "%s/%s/%s" %(30,month,year)
         return "%s - %s" %(strDateMin_p2, strDateMax_p2)
     else:
-        print "FAIL - Incorrect pay period value!"
+        print ("FAIL - Incorrect pay period value!")
 
 
 #FUNCTION: Calculates employee actual pay based on hours worked & associated job group id        
@@ -98,5 +98,5 @@ def compute_pay(app, eid_hours, eid_group):
         eid_pay = app.config['PAY_RATE_GROUP_B'] * eid_hours
         return eid_pay
     else:
-        print "FAIL - Unexpected value for 'eid_group'"
+        print ("FAIL - Unexpected value for 'eid_group'")
         return 0

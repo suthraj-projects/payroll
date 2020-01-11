@@ -17,9 +17,9 @@ def checkPathExists(folder_path):
     try:
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
-            print "SUCCESS: Folder path created - '%s' " %(folder_path)
+            print ("SUCCESS: Folder path created - '%s' " %(folder_path))
     except:
-        print "ERROR: Failed folder path check - '%s' " %(folder_path)
+        print ("ERROR: Failed folder path check - '%s' " %(folder_path))
         
         
 #FUNCTION: Saves uploaded file on the server
@@ -35,5 +35,5 @@ def upload_file(upload_path, file):
         file.save(savePath)
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Upload of file '%s' failed" %(filename)
+        print ("ERROR: Upload of file '%s' failed" %(filename))
         

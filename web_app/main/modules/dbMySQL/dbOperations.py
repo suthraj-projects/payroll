@@ -6,14 +6,23 @@
     NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal SQL readability. 
 """
 
-
-import dbModels as db_models
+#import pymysql
+from . import dbModels as db_models
 from datetime import datetime
 
 
 #FUNCTION: Check if table exists in database
 def db_tb_existsCheck(mysql, tb_name):
     cursor = mysql.connection.cursor()
+#    cursor = mysql.get_db().cursor()
+    
+#    conn = mysql.connect()
+#    cursor = conn.cursor()
+
+#    conn = mysql.connect()
+#    cursor = conn.cursor(pymysql.cursors.DictCursor)
+
+    
     sql = "SHOW TABLES LIKE '%s'" %(tb_name)
     try:
         cursor.execute(sql);
@@ -22,7 +31,7 @@ def db_tb_existsCheck(mysql, tb_name):
         return flag_tb_exists  
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name + "' does not exist in database ")
     finally:
         cursor.close() 
 
@@ -47,7 +56,7 @@ def db_tb_drop(mysql, drop_tableName):
         #print "SUCCESS: Table '" + drop_tableName + "' dropped successfully "
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + drop_tableName + "' does not exist in database "
+        print ("ERROR: Table '" + drop_tableName + "' does not exist in database ")
     finally:
         cursor.close() 
 
@@ -57,6 +66,8 @@ def get_tb(mysql, tb_name):
     #print "GET - Uploaded 'timesheet_report' data" 
 
     cursor = mysql.connection.cursor()
+#    cursor = mysql.get_db().cursor()
+
     sql    = "SELECT * FROM %s" %(tb_name)
     try:
         cursor.execute(sql);
@@ -65,7 +76,7 @@ def get_tb(mysql, tb_name):
         return tb_data
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name + "' does not exist in database ")
     finally:
         cursor.close()
 
@@ -82,7 +93,7 @@ def get_tb_data_order_01(mysql, tb_name):
         return db_pr_list
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name + "' does not exist in database ")
         return
     finally:
         cursor.close() 
@@ -101,7 +112,7 @@ def get_tb_data_order_02(mysql, tb_name):
         return tb_data
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name + "' does not exist in database ")
     finally:
         cursor.close()
 
@@ -141,7 +152,7 @@ def db_tb_init(mysql, DB_TB_NAMES):
                 sql = db_models.db_model_payroll_history(DB_TB_NAMES["tb_history"])
                 db_tb_create(mysql, sql, DB_TB_NAMES["tb_history"])
             else:
-                print "ERROR - Unknown table name"
+                print ("ERROR - Unknown table name")
     return
 
 
@@ -185,16 +196,16 @@ def db_model_time_report_insert(mysql, csvData_list, report_id, tb_name_01, tb_n
                 cursor.execute(sql2)
                 mysql.connection.commit()
                 
-            print "New report successfully added to database"
+            print ("New report successfully added to database")
             return 111, ""
         
         else:
-            print "ERROR: Report ID '%s' already exists - Timesheet rejected!" %(report_id)
+            print ("ERROR: Report ID '%s' already exists - Timesheet rejected!" %(report_id))
             return 333, str(report_id)
             
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Failed to insert data into table: '%s'" %(tb_name_01)
+        print ("ERROR: Failed to insert data into table: '%s'" %(tb_name_01))
         return 000, tb_name_01
     finally:
         cursor.close() 
@@ -221,10 +232,10 @@ def db_tb_payroll_report_insert(mysql, eid, tb_name_src, tb_name_dest):
                 mysql.connection.commit()
                 #print "SUCCESS: Writing to '%s' table successful" %(tb_name_dest)
             except:
-                print "ERROR: Writing to '%s' table failed" %(tb_name_dest)   
+                print ("ERROR: Writing to '%s' table failed" %(tb_name_dest))   
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name_src + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name_src + "' does not exist in database ")
         return
     
     finally:
@@ -260,7 +271,7 @@ def get_ts_eid(mysql, tb_name):
         return db_tb_uniqueIDs
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name + "' does not exist in database ")
         return
     finally:
         cursor.close() 
@@ -280,7 +291,7 @@ def get_ts_eid_data(mysql, tb_name, eid):
         return db_tr_eid_data
     except:
         #print bcolors.WARNING + "ERROR: Table '" + dropTableName + "' does not exist in database "  + bcolors.ENDC
-        print "ERROR: Table '" + tb_name + "' does not exist in database "
+        print ("ERROR: Table '" + tb_name + "' does not exist in database ")
         return
     finally:
         cursor.close() 

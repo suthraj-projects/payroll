@@ -93,10 +93,10 @@ Check installed Python version, should say "Python 2.7.1x"
 python --version
 ```
 
-Create a directory called vEnvPython in the home directory
+Create a directory called vEnvPython in the home directory & navigate into it.
 
 ```python
-mkdir ~/vEnvPy
+mkdir ~/projects/py/venv
 ```
 
 Check Python installation
@@ -109,24 +109,63 @@ which python
 which virtualenv 
 ```
 
-Create environment variable using Python 2.7
+Create environment variable
 
 ```python
-virtualenv ~/vEnvPy/payroll_py2_7 --python=/usr/bin/python
+Create Python virtual environment - Python 3.7
+virtualenv --python=python3.7 venv-py3.7
 
-#Activate new python virtual environment
-source ~/vEnvPy/payroll_py2_7/bin/activate
+	OR
+		#Alternative method using absolute paths
+		virtualenv ~/projects/py/venv/venv-py3.7 --python=/usr/bin/python3.7
+
+	#NOTE: Alternatively, to create Python 2.7 virtual environment
+	virtualenv --python=python2.7 venv-py2.7 
 ```
+
+Activate new python virtual environment
+
+```python
+Activate Python 3.7
+source ~/projects/py/venv/venv-py3.7/bin/activate
+
+	#NOTE: Alternatively, to activate Python 2.7
+	source ~/projects/py/venv/venv-py2.7/bin/activate
+```
+
+Check version of pip & update if necessary
+
+```python
+#Check version
+pip --version
+
+#Update pip
+pip install --upgrade pip
+```
+
+
 
 <b> FLASK - Install/Configure Flask </b>
 
 Install following necessary dependencies
 
 ```python
-sudo apt-get install python-dev default-libmysqlclient-dev libssl-dev
+#Python 3.7+
+sudo apt-get install python3.7-dev
+pip install mysqlclient
+
+	#NOTE: For Python 2.7.x
+	sudo apt-get install python-dev default-libmysqlclient-dev libssl-dev
 
 #Make sure the following dependency is installed successfully (might require 'sudo')
 pip install flask-mysqldb
+		
+#Install using pip
+pip install Flask-SQLAlchemy
+
+#Install and update using pip
+pip install -U Flask-SQLAlchemy
+
 ```
 
 Navigate to project directory

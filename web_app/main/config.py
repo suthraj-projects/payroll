@@ -10,6 +10,8 @@ import os
 from flask import Flask
 from flask_mysqldb import MySQL
 
+#from flaskext.mysql import MySQL
+
 
 ########################################################################
 ###############===== CONSTANTS: GENERAL APPLICATION =====###############
@@ -36,6 +38,7 @@ app.config['DB_TABLE_PAYROLL_REPORT']       = "payroll_report"
 app.config['DB_TABLE_TIMESHEET_HISTORY']    = "timesheet_history"   
 app.config['DB_TABLE_PAYROLL_HISTORY']      = "payroll_history"
 
+
 # MySQL configurations
 app.config['MYSQL_HOST']          = 'localhost'
 app.config['MYSQL_USER']          = 'srpub'
@@ -43,7 +46,20 @@ app.config['MYSQL_PASSWORD']      = 'mysql111'
 app.config['MYSQL_DB']            = 'payroll'
 app.config['MYSQL_CURSORCLASS']   = 'DictCursor'
 
+
+"""
+# MySQL configurations
+app.config['MYSQL_DATABASE_HOST']           = 'localhost'
+app.config['MYSQL_DATABASE_USER']           = 'srpub'
+app.config['MYSQL_DATABASE_PASSWORD']       = 'mysql111'
+app.config['MYSQL_DATABASE_DB']             = 'payroll'
+#app.config['MYSQL_DATABASE_SOCKET']         = '/var/run/mysqld/mysqld.sock'
+#app.config['MYSQL_CURSORCLASS']   = 'DictCursor'
+"""
+
 mysql = MySQL(app)
+#mysql = MySQL()
+#mysql.init_app(app)
 
 ########################################################################
 ##########====== CONSTANTS: PAYROLL APPLICATION specific =====##########
