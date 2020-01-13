@@ -60,6 +60,9 @@ SHOW DATABASES;
 Add following db user access to new database
 
 ```mysql
+#Check if user 'srpub' is already added to MySQL database
+SELECT user FROM mysql.user;
+
 CREATE USER 'srpub'@'localhost' IDENTIFIED BY 'mysql111';
 GRANT ALL PRIVILEGES ON payroll.* TO 'srpub'@'localhost';
 ```
@@ -91,6 +94,28 @@ Check installed Python version, should say "Python 2.7.1x"
 
 ```python
 python --version
+
+#Check which version of Python are installed
+ls -l /usr/bin/python*
+
+```
+
+NOTE: 
+If Python is not installed, then install as follows
+
+```python
+sudo apt-get update
+sudo apt-get install python3.7
+sudo apt-get install software-properties-common
+
+#Use ‘deadsnakes’ PPA to install Python 3.7
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+sudo apt-get update
+sudo apt-get install python3.7
+
+#Verify Python 3.7+ has been installed
+python3.7 --version
 ```
 
 Create a directory called vEnvPython in the home directory & navigate into it.
@@ -152,6 +177,10 @@ Install following necessary dependencies
 ```python
 #Python 3.7+
 sudo apt-get install python3.7-dev
+
+#Install Flask
+pip install -U Flask
+
 pip install mysqlclient
 
 	#NOTE: For Python 2.7.x
