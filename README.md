@@ -189,9 +189,16 @@ pip install -r requirements.txt
 Explain how to run the automated tests for this system
 
 To run specific test case classes, execute the relevant unit test class one level above the project package parent directory as follows
+ie.
+	~/projects/s_git/gitHub/projects/s$ python -m unittest -v payroll.tests.un.classesTC_un.test_tc_payroll
+
 
 ```bash
-~/projects$ python -m unittest -v payroll.web_app.tests.un.classesTC_un.TC_ComputePayroll
+#To run test suite composed of multiple test classes
+python -m unittest -v payroll.tests.un.run_un_ts_main
+
+#To run test case class directly 
+python -m unittest -v payroll.tests.un.classesTC_un.test_tc_payroll
 ```
  
 ## Deployment

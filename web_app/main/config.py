@@ -46,20 +46,7 @@ app.config['MYSQL_PASSWORD']      = 'mysql111'
 app.config['MYSQL_DB']            = 'payroll'
 app.config['MYSQL_CURSORCLASS']   = 'DictCursor'
 
-
-"""
-# MySQL configurations
-app.config['MYSQL_DATABASE_HOST']           = 'localhost'
-app.config['MYSQL_DATABASE_USER']           = 'srpub'
-app.config['MYSQL_DATABASE_PASSWORD']       = 'mysql111'
-app.config['MYSQL_DATABASE_DB']             = 'payroll'
-#app.config['MYSQL_DATABASE_SOCKET']         = '/var/run/mysqld/mysqld.sock'
-#app.config['MYSQL_CURSORCLASS']   = 'DictCursor'
-"""
-
 mysql = MySQL(app)
-#mysql = MySQL()
-#mysql.init_app(app)
 
 ########################################################################
 ##########====== CONSTANTS: PAYROLL APPLICATION specific =====##########
