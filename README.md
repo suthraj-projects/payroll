@@ -223,6 +223,13 @@ ie.
 
 
 ```bash
+
+NOTE: Make sure tests are run after Python 3.7 virtual environment is activated.
+
+Activate Python 3.7
+source ~/projects/py/venv/venv-py3.7/bin/activate
+
+
 #To run test suite composed of multiple test classes
 python -m unittest -v payroll.tests.un.run_un_ts_main
 
