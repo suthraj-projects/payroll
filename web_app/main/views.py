@@ -13,13 +13,23 @@ from datetime import datetime
 from flask import Flask, flash, render_template, request, redirect
 from werkzeug.utils import secure_filename
 
-#Import configuration
-from .config import app, mysql
+"""
+    Import configuration (NOTE: Relative import)
+"""
+#from .config import app, mysql
+from ..config import conf
 
-#Import custom modules.
+app     = conf.app
+mysql   = conf.mysql
+
+"""
+    Import custom modules.
+"""
 from . import modules as m
 
-#Import registered Blueprint.
+"""
+    Import registered Blueprint.
+"""
 from . import blueprint_main as main
 
 DB_TB_NAMES    = {
