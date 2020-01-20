@@ -2,7 +2,7 @@
     AUTHOR: Sutharsan Rajaratnam
     DATE: December, 24, 2019
     PURPOSE: Unit test cases to test payroll compute functions
-    tests/.../classesTC_in/TC_ComputePayroll.py
+    payroll/tests/.../classesTC_in/TC_ComputePayroll.py
     
     TODO:
     
@@ -25,10 +25,12 @@
 """
 
 import unittest
-import payroll.web_app.main.config as conf
+#import payroll.web_app.main.config as conf
+from payroll.apps_web.pr_main.config import conf
 
 try:
-    import payroll.web_app.main.modules.payroll as payroll
+#    import payroll.web_app.main.modules.payroll as payroll
+    import payroll.apps_web.pr_main.client.modules.payroll as payroll
 
 except ImportError:
     print('ERROR: Import modules not found')
