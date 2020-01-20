@@ -136,4 +136,4 @@ venv.bak/
 
 
 #NOTE: Special specific re-included files
-!*/main/data/sample/*.csv 
+!*/data/sample/*.csv 
