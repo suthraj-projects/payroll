@@ -10,12 +10,17 @@
 
 import os
 from datetime import datetime
-#from app import app, mysql
-from config import app, mysql
 from flask import Flask, flash, render_template, request, redirect
 from werkzeug.utils import secure_filename
 
-import modules as m
+#Import configuration
+from .config import app, mysql
+
+#Import custom modules.
+from . import modules as m
+
+#Import registered Blueprint.
+from . import blueprint_main as main
 
 DB_TB_NAMES    = {
                     "tb_timesheet":     app.config['DB_TABLE_TIME_REPORT'], 
@@ -26,45 +31,48 @@ DB_TB_NAMES    = {
 
 
 #ROUTE: Default (ie.'homepage') route for web application
-@app.route("/")
+#@app.route("/")
+@main.route("/")
 def home():
     m.db.db_op.db_tb_init(mysql, DB_TB_NAMES)
     tb_data_csv = m.db.db_op.get_tb(mysql, app.config['DB_TABLE_TIME_REPORT'])    
-    return render_template("home.html", tb_tr_data=tb_data_csv)
+    return render_template("/home.html", tb_tr_data=tb_data_csv)
 
 #ROUTE: Provides brief overview of web application.
-@app.route("/about")
+@main.route("/about")
 def about():
     return render_template("about.html")
 
 
 #ROUTE: Upload timesheet files to server.
-@app.route('/', methods=['POST'])
+@main.route('/', methods=['POST'])
 def upload():
 #    print "STEP 1:    Upload Data File "
+    print ("TEST---1")
     process_upload()
-    return redirect('/')
+    print ("TEST---2")
+    return redirect('/main')
 
 
 #ROUTE: Shows processed payroll report based on all uploaded timesheets.
-@app.route("/payrollreport")
+@main.route("/payrollreport")
 def payrollReport():    
     db_pr_list = m.db.db_op.get_tb_data_order_01(mysql, app.config['DB_TABLE_PAYROLL_REPORT'])
     return render_template("payrollreport.html", tb_csvData=db_pr_list)
 
 
 #ROUTE: Shows history of raw timesheet data from all successfully uploaded timesheets.
-@app.route("/timesheethistory")
+@main.route("/timesheethistory")
 def timesheetHistory(): 
     db_ts_history_list = m.db.db_op.get_tb_data_order_02(mysql, app.config['DB_TABLE_TIMESHEET_HISTORY'])
     return render_template("ts_history.html", tb_data=db_ts_history_list)
 
 
 #ROUTE: Resets all server side tables listed in 'DB_TB_NAMES' dictionary above.
-@app.route("/reset")
+@main.route("/reset")
 def reset():
     m.db.db_op.db_tb_reset(mysql, DB_TB_NAMES)
-    return redirect('/')
+    return redirect('/main')
 
 
 """
@@ -78,11 +86,13 @@ def process_upload():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return redirect(request.url)
+            #return redirect(request.url)
+            return redirect('/main')
         file = request.files['file']
         if file.filename == '':
             flash('No file selected for uploading')
-            return redirect(request.url)
+            #return redirect(request.url)
+            return redirect('/main')
         if file and m.upload.allowed_file(file.filename, app.config['ALLOWED_EXTENSIONS']):
             m.upload.upload_file(app.config['UPLOAD_PATH'], file)
             flash('File successfully uploaded', 'success')
@@ -91,8 +101,8 @@ def process_upload():
             process_payroll(report_id) 
         else:
             flash('Allowed file types only: .csv')
-            return redirect(request.url)
-
+            #return redirect(request.url)
+            return redirect('/main')
                
 def process_csv(filepath, filename):
     
@@ -132,6 +142,6 @@ def process_payroll(report_id):
     m.pay.compute_payroll(app, mysql, report_id)
 
 
-    
+#Enables this view file to be executed directly as a 'solo' standalone flask application.    
 if __name__ == "__main__":
     app.run(debug=True)

@@ -5,14 +5,13 @@
     PURPOSE: 
     NOTE: 
 
-    FILE: payroll/main/__init__.py
+    FILE: payroll/admin/__init__.py
 
 """
 
 from flask import Blueprint
 
-#Define blueprint
-blueprint_main   = Blueprint('main', __name__, url_prefix='/main',
+blueprint_admin   = Blueprint('admin', __name__, url_prefix='/admin',
                             template_folder='templates',
                             static_folder='static')
 
