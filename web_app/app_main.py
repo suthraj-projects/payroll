@@ -17,7 +17,7 @@ Import relevant custom modules
 
 #METHOD-02: Module import approach to importing relevant configuration files (relies on '__init__.py' of 'config' module, simpler to rename modules).  
 #Import global configurations defined in 'config.py' from module 'config'
-from web_app.config import conf
+from pr_main.config import conf
 
 #Get flask 'app' instance
 app = conf.app
