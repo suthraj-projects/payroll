@@ -31,7 +31,7 @@
 				<thead>
 					<tr >
 						<th style="width: 50%">
-							<form method="POST" action="{{ url_for('main.home') }}" enctype="multipart/form-data">
+							<form method="POST" action="{{ url_for('client.home') }}" enctype="multipart/form-data">
 							    <dl>
 									<p><input type="file" name="file" autocomplete="off" required></p>
 							    </dl>
@@ -41,7 +41,7 @@
 						<th style="width: 50%">
 							<div class="container" align="RIGHT">
 								<h3> <b>OPTION</b> - Reset All Tables </h3>
-								<form action="{{ url_for('main.reset') }}" method="GET">
+								<form action="{{ url_for('client.reset') }}" method="GET">
 									<div style="float:top;margin-right:20px;">
 										<label > Reset all server side tables</label>
 									</div>

@@ -16,7 +16,7 @@ app = conf.app
 #Import application Blueprints 
 from .api import blueprint_api as bp_api
 from .admin import blueprint_admin as bp_admin
-from .main import blueprint_main as bp_main
+from .client import blueprint_client as bp_client
 
 
 """
@@ -41,6 +41,6 @@ To use a blueprint,
 
 #Register application Blueprints
 app.register_blueprint(bp_admin)
-app.register_blueprint(bp_main)
+app.register_blueprint(bp_client)
 app.register_blueprint(bp_api)
 

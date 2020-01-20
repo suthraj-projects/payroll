@@ -2,8 +2,8 @@
     AUTHOR: Sutharsan Rajaratnam
     DATE: November 17, 2019
     APPLICATION: Payroll Web Application
-    FILE: payroll/web_app/main/views.py
-    PURPOSE: The main application file to run the "Payroll Report" web application
+    FILE: payroll/web_app/client/views.py
+    PURPOSE: The client application file to run the "Payroll Report" web application
     
     NOTE: Explicitly excluded using 'SQLAlchemy' (Python SQLtoolkit & ORM), wanted to maintain non-Python universal readability. 
 """
@@ -30,7 +30,7 @@ from . import modules as m
 """
     Import registered Blueprint.
 """
-from . import blueprint_main as main
+from . import blueprint_client as client
 
 DB_TB_NAMES    = {
                     "tb_timesheet":     app.config['DB_TABLE_TIME_REPORT'], 
@@ -42,47 +42,47 @@ DB_TB_NAMES    = {
 
 #ROUTE: Default (ie.'homepage') route for web application
 #@app.route("/")
-@main.route("/")
+@client.route("/")
 def home():
     m.db.db_op.db_tb_init(mysql, DB_TB_NAMES)
     tb_data_csv = m.db.db_op.get_tb(mysql, app.config['DB_TABLE_TIME_REPORT'])    
     return render_template("/home.html", tb_tr_data=tb_data_csv)
 
 #ROUTE: Provides brief overview of web application.
-@main.route("/about")
+@client.route("/about")
 def about():
     return render_template("about.html")
 
 
 #ROUTE: Upload timesheet files to server.
-@main.route('/', methods=['POST'])
+@client.route('/', methods=['POST'])
 def upload():
 #    print "STEP 1:    Upload Data File "
     print ("TEST---1")
     process_upload()
     print ("TEST---2")
-    return redirect('/main')
+    return redirect('/client')
 
 
 #ROUTE: Shows processed payroll report based on all uploaded timesheets.
-@main.route("/payrollreport")
+@client.route("/payrollreport")
 def payrollReport():    
     db_pr_list = m.db.db_op.get_tb_data_order_01(mysql, app.config['DB_TABLE_PAYROLL_REPORT'])
     return render_template("payrollreport.html", tb_csvData=db_pr_list)
 
 
 #ROUTE: Shows history of raw timesheet data from all successfully uploaded timesheets.
-@main.route("/timesheethistory")
+@client.route("/timesheethistory")
 def timesheetHistory(): 
     db_ts_history_list = m.db.db_op.get_tb_data_order_02(mysql, app.config['DB_TABLE_TIMESHEET_HISTORY'])
     return render_template("ts_history.html", tb_data=db_ts_history_list)
 
 
 #ROUTE: Resets all server side tables listed in 'DB_TB_NAMES' dictionary above.
-@main.route("/reset")
+@client.route("/reset")
 def reset():
     m.db.db_op.db_tb_reset(mysql, DB_TB_NAMES)
-    return redirect('/main')
+    return redirect('/client')
 
 
 """
@@ -97,12 +97,12 @@ def process_upload():
         if 'file' not in request.files:
             flash('No file part')
             #return redirect(request.url)
-            return redirect('/main')
+            return redirect('/')
         file = request.files['file']
         if file.filename == '':
             flash('No file selected for uploading')
             #return redirect(request.url)
-            return redirect('/main')
+            return redirect('/')
         if file and m.upload.allowed_file(file.filename, app.config['ALLOWED_EXTENSIONS']):
             m.upload.upload_file(app.config['UPLOAD_PATH'], file)
             flash('File successfully uploaded', 'success')
@@ -112,7 +112,7 @@ def process_upload():
         else:
             flash('Allowed file types only: .csv')
             #return redirect(request.url)
-            return redirect('/main')
+            return redirect('/')
                
 def process_csv(filepath, filename):
     

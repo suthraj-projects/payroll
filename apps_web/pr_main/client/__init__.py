@@ -12,7 +12,7 @@
 from flask import Blueprint
 
 #Define blueprint
-blueprint_main   = Blueprint('main', __name__, url_prefix='/main',
+blueprint_client   = Blueprint('client', __name__, url_prefix='/client',
                             template_folder='templates',
                             static_folder='static')
 

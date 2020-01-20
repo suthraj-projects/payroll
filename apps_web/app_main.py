@@ -32,7 +32,7 @@ from flask import Flask, flash, render_template, request, redirect
 #@app.route("/")
 @app.route("/")
 def home():
-     return redirect('/main')
+     return redirect('/client')
 
 #Global 'payroll' application instantiation 
 app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)
